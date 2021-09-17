@@ -15,4 +15,5 @@ docker stack deploy --compose-file docker-compose.yml angular-api
 
 docker service update angular-api_user-api --image localhost:5000/user-api
 
+
 docker stack deploy --compose-file portainer-agent-stack.yml portainer 
