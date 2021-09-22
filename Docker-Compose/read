@@ -1,0 +1,8 @@
+docker network create docker_network
+
+
+
+
+
+docker  volume create trn_data
+docker  volume create kong_api_gateway_data

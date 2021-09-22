@@ -6,14 +6,32 @@ docker swarm join-token manager
 docker swarm join-token worker
 
 
+docker network create -d overlay swarm_network
+
 
 docker service create --replicas 1 --name visualize --mount type=bind,src=/var/run/docker.sock,destination=/var/run/docker.sock   --publish  8080:8080 ajsurath/visualizer:1.0
 
-
-docker stack deploy --compose-file docker-compose.yml angular-api
+docker stack deploy --compose-file docker-compose.yml angular_api
 
 
 docker service update angular-api_user-api --image localhost:5000/user-api
 
 
 docker stack deploy --compose-file portainer-agent-stack.yml portainer 
+
+
+
+
+
+
+
+
+setup kong
+
+   service trn_master_data  
+        set host = trn_trn_master_data 
+
+        route 
+            set path = /api/master-data/
+
+

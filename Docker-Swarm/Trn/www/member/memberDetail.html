@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- STYLESHEET -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" type="text/css">
+    <link rel="stylesheet" href="../source/plugins/bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../source/plugins/nifty/nifty.min.css" type="text/css">
+    <link rel="stylesheet" href="../source/icons/premium-line-icons.min.css" type="text/css" />
+    <link rel="stylesheet" href="../source/icons/premium-solid-icons.min.css" type="text/css" />
+    <link rel="stylesheet" href="../source/plugins/pace/pace.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <!-- END STYLESHEET -->
+    <!-- ================================================= -->
+    <!--DataTables [ OPTIONAL ]-->
+    <link href="../source/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../source/plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet">
+    <!-- THEME -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="./css/memberDetail.css" type="text/css">
+    <!-- ================================================= -->
+    <!-- END THEME -->
+    <!-- CUSTOM CSS -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="../source/css/web-custom.css" type="text/css">
+    <!-- ================================================= -->
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="../source/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+    <!--Bootstrap Datetimepicker [ OPTIONAL ]-->
+    <link href="../source/plugins/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <link href="../source/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet" />
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../source/css/demo/nifty-demo-icons.min.css" rel="stylesheet" />
+    <!-- END CUSTOM CSS -->
+
+</head>
+
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        <!-- NAVBAR -->
+        <!-- ================================================= -->
+        <header id="navbar"></header>
+        <!-- ================================================= -->
+        <!-- END NAVBAR -->
+        <div class="boxed">
+            <!-- CONTENT CONTAINER -->
+            <!-- ================================================= -->
+            <div id="content-container">
+                <div id="page-head">
+                </div>
+                <!-- PAGE CONTENT -->
+                <!-- ================================================= -->
+                <!-- MEMBER INFORMATION -->
+                <!-- ================================================= -->
+                <div id="page-content">
+                    <div class="row">
+                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="panel panel-body text-left">    
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><b>Member Information</b></h3>
+                                </div>  
+                                <div class="panel-body" id="mainMember">
+                                <form id="demo-bv-accordion" class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label">Prefix: </label>
+                                                <div class="col-sm-6">
+                                                    <select class="selectpicker" data-live-search="true" id="prefix" name="prefix" data-width="100%"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label">Telephone No. </label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="tel" name="tel"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group required">
+                                                <label class="col-md-2 control-label">Firstname: </label>
+                                                <div class="col-md-6">
+                                                    <input class="form-control" id="firstname"  name="firstname"  title="" type="text" />
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Email:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="email" readonly name="email" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label">Lastname: </label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="lastname" name="lastname"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label">Status: </label>
+                                                <div class="col-sm-6">
+                                                    <select class="selectpicker" data-live-search="true" id="memberStatus" name="memberStatus" data-width="100%"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="button-float-right">
+                                      <div class="text-center">
+                                        <button class="btn btn-default" id="cancelInfo"><i class="fas fa-times"></i>&nbsp;Cancel</button>
+                                        <button class="btn btn-success btn-labeled" id="editMember">Edit</button>
+                                      </div>
+                                    </div>
+                                </form>                         
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ================================================= -->
+                    <!-- END MEMBER INFORMATION -->
+                    <!-- MEMBER CREDENTIAL -->
+                    <!-- ================================================= -->
+                    <div id="page-show">
+                        <div class="row">
+                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="panel panel-body text-left">  
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><b>Member Password</b></h3>
+                                    </div>                               
+                                    <form class="form-horizontal">
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label text-left" for="">Username:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="email" placeholder="Username" id="username" readonly name="username" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label text-left" for="">Password:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="email" placeholder="Password" id="editPassword" readonly name="editPassword" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>                            
+                                    <div class="panel-footer text-right">
+                                        <button id="resetPassword" class="btn btn-default btn-labeled"><i class="fas fa-redo-alt fa-flip-horizontal"></i>&nbsp;Reset password</button>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- ================================================= -->
+                <!-- END  MEMBER CREDENTIAL -->
+                <!-- MEMBER WALLET -->
+                <!-- ================================================= -->
+                <div id="page-balance">
+                    <div class="row">
+                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="panel panel-body text-left">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><b>Member Balance</b></h3>
+                                </div>  
+                                <form>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label text-left" for="">Balance:</label>
+                                            <div class="col-sm-6">
+                                                <input type="email" placeholder="Balance" id="balance" readonly name="balance" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ================================================= -->
+                <!-- END  MEMBER WALLET -->
+                <!-- SEARCH CRITERIA -->
+                <!-- ================================================= -->
+                <div id="page-datetime">
+                    <div class="row">
+                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="panel text-left"> 
+                                <div class="panel-body" id="mainDatepk">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><b>Search Member Statement</b></h3>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">                                      
+                                        <form class="form-horizontal">
+                                            <div class="panel-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-left" for="">Date from :</label>
+                                                    <div class="col-sm-9 input-group date" id="dpkDateFrom">
+                                                        <input type="text" name="txtDateFrom" placeholder="YYYY/MM/DD"
+                                                            id="txtDateFrom" class="form-control" />
+                                                        <span class="input-group-addon"><i
+                                                                class="demo-pli-calendar-4"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <form class="form-horizontal">
+                                            <div class="panel-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-left" for="">Date to :</label>
+                                                    <div class="col-sm-9 input-group date" id="dpkDateTo">
+                                                        <input type="text" name="txtDateTo" placeholder="YYYY/MM/DD"
+                                                            id="txtDateTo" class="form-control" />
+                                                        <span class="input-group-addon"><i
+                                                                class="demo-pli-calendar-4"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>                                           
+                                        </form>                                       
+                                    </div>       
+                                </div>                                
+                                <div class="panel-footer text-right">
+                                    <button id="resetDate" class="btn btn-default btn-labeled"><i class="fas fa-redo-alt fa-flip-horizontal"></i>&nbsp;Reset</button>
+                                    <button id="searchDate" class="btn btn-primary btn-labeled"><i class="fas fa-search"></i>&nbsp;Search</button>
+                                </div> 
+                                
+                                <div id="page-balance">
+                                    <div class="row">
+                                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="panel panel-body text-left">
+                                                <form>                              
+                                                    <div class="panel">					
+                                                    <!--PANEL HEADE-->
+                                                        <div class="panel-heading">					                
+                                                            <ul class="nav nav-tabs">
+                                                                <li class="active"><a href="#demo-tabs-box-1"  id="deposittab" data-toggle="tab">Deposit</a></li>
+                                                                <li><a href="#demo-tabs-box-2" data-toggle="tab" id="withdrawtab" >Withdraw</a></li>
+                                                                <li><a href="#demo-tabs-box-3" data-toggle="tab" id="transactiontab">Transaction</a></li>
+                                                            </ul>					                
+                                                        </div>					
+                                                        <!--PANEL BODY-->
+                                                        <div class="panel-body">
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade in active" id="demo-tabs-box-1">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="panel">                                        
+                                                                            <!-- TABLE DEPOSIT-->
+                                                                            <!--===================================================-->
+                                                                            <div class="panel-body">
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered datatable" id="tableDeposit" style="margin:0px;width: 100%;">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th class="text-center">Date</th>
+                                                                                                <th class="text-center">Type</th>
+                                                                                                <th class="text-center">Amount</th>
+                                                                                                <th class="text-center">Status</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--END TABLE DEPOSIT-->   
+                                                                            <!--===================================================-->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>                                                   
+                                                                </div>
+                                                                <div class="tab-pane fade" id="demo-tabs-box-2">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="panel">                                        
+                                                                            <!--TABLE WITHDRAW-->
+                                                                            <!--===================================================-->
+                                                                            <div class="panel-body">
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered datatable" id="tableWithdraw" style="margin:0px;width: 100%;">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th class="text-center">Date</th>
+                                                                                                <th class="text-center">Type</th>
+                                                                                                <th class="text-center">Amount</th>
+                                                                                                <th class="text-center">Status</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--END TABLE WITHDRAW--> 
+                                                                            <!--===================================================-->                                                                                                
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>                                                   
+                                                                </div>
+                                                                <div class="tab-pane fade" id="demo-tabs-box-3">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="panel">                                        
+                                                                            <!--TABLE TRANSACTION-->
+                                                                            <!--===================================================-->
+                                                                            <div class="panel-body">
+                                                                                <div class="table-responsive">
+                                                                                    <table class="table table-striped table-bordered datatable" id="tableTransaction" style="margin:0px;width: 100%;">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th class="text-center">Date</th>
+                                                                                                <th class="text-center">Type</th>
+                                                                                                <th class="text-center">Balance Forward</th>
+                                                                                                <th class="text-center">Amount</th>
+                                                                                                <th class="text-center">Balance</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--END TABLE TRANSACTION-->  
+                                                                            <!--===================================================-->                                                                                                 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>                                                              
+                </div>
+                <!-- ================================================= -->
+                <!-- END  SEARCH CRITERIA -->
+                <!-- MEMBER STATEMEN TABLES -->
+                <!-- ================================================= -->
+                
+                <!--END MEMBER STATEMEN TABLES -->
+                <!--===================================================-->					                
+                </div>
+                <!-- ================================================= -->
+                <!-- END PAGE CONTENT -->
+            </div>
+            <!-- ================================================= -->
+            <!-- END CONTENT CONTAINER -->
+            <!-- MAIN NAVIGATION -->
+            <!-- ================================================= -->
+            <nav id="mainnav-container"></nav>
+            <!-- ================================================= -->
+            <!-- END MAIN NAVIGATION -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+        <footer id="footer"></footer>
+        <!-- ================================================= -->
+        <!-- END FOOTER -->
+    </div>
+    <!-- ================================================= -->
+    <!-- END OF CONTAINER -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================================= -->
+    <script src="../source/plugins/jquery/jquery.min.js"></script>
+    <script src="../source/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../source/plugins/pace/pace.min.js"></script>
+    <script src="../source/plugins/momentjs/moment.min.js"></script>
+    <!-- ================================================= -->
+    <!-- END JAVASCRIPT -->
+    <!--DataTables [ OPTIONAL ]-->
+    <script src="../source/plugins/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="../source/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+    <script src="../source/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <script src="../source/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- CUSTOM JAVASCRIPT -->
+    <!-- ================================================= -->
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <script src="../source/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+    <script src="../source/js/web-custom.js"></script>
+    <!-- ================================================= -->
+    <script src="../source/plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/member/js/memberDetail.js"></script>
+    <!-- END CUSTOM JAVASCRIPT -->
+</body>
+
+</html>

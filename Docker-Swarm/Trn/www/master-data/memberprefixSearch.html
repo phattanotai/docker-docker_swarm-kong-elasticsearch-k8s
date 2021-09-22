@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- STYLESHEET -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" type="text/css" />
+    <link rel="stylesheet" href="../source/plugins/bootstrap/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../source/plugins/nifty/nifty.min.css" type="text/css" />
+    <link rel="stylesheet" href="../source/icons/premium-line-icons.min.css" type="text/css" />
+    <link rel="stylesheet" href="../source/icons/premium-solid-icons.min.css" type="text/css" />
+    <link rel="stylesheet" href="../source/plugins/pace/pace.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../source/css/demo/nifty-demo-icons.min.css" rel="stylesheet" />
+    <!--BOOTSTRAP SELECT [ OPTIONAL ]-->
+    <link href="../source/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <!--DATATABLE [ OPTIONAL ]-->
+    <link href="../source/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="../source/plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css"
+        rel="stylesheet" />
+    <!--BOOTSTRAP DATETIMEPICKER [ OPTIONAL ]-->
+    <link href="../source/plugins/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet" />
+    <!--BOOTSTRAP VALIDATOR [ OPTIONAL ]-->
+    <link href="../source/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet" />
+    <!-- END STYLESHEET -->
+    <!-- ================================================= -->
+    <!-- THEME -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="" type="text/css" />
+    <!-- ================================================= -->
+    <!-- END THEME -->
+    <!-- CUSTOM CSS -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="../source/css/web-custom.css" type="text/css" />
+    <link href="../source/plugins/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/masterDataMemberPrefix.css" type="text/css" />
+    <!-- END CUSTOM CSS -->
+
+</head>
+
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        <!-- NAVBAR -->
+        <!-- ================================================= -->
+        <header id="navbar"></header>
+        <!-- ================================================= -->
+        <!-- END NAVBAR -->
+        <div class="boxed">
+            <!-- CONTENT CONTAINER -->
+            <!-- ================================================= -->
+            <div id="content-container">
+                <div id="page-head">
+                </div>
+                <!-- PAGE CONTENT -->
+                <!-- ================================================= -->
+                <div id="page-content">
+                    <div class="row">
+                        <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="panel panel-body text-left">
+                                <!-- PANEL HEADER -->
+                                <!-- ================================================= -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title text-bold">Member Prefix Search</h3>
+                                </div>
+
+                                <!-- ================================================= -->
+                                <!-- End Panel Header -->
+                                <!-- Member PREFIX Search -->
+                                <!-- ================================================= -->
+                                <form id="datasearchmemberprefix" class="form-horizontal">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <!--SEARCH Member PREFIX-->
+                                            <!--===================================================-->
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Prefix Name</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="seachprefixname"
+                                                            placeholder="Prefix Name" id="seachprefixname" />
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!--===================================================-->
+                                            <!--END SEARCH NUMMBER NAME-->
+                                            <!--SEARCH Active -->
+                                            <!--===================================================-->
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Active</label>
+                                                    <div class="col-sm-6">
+
+                                                        <select class="selectpicker" data-live-search="true"
+                                                            data-width="100%" id="seachActive">
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--END SEARCH Active-->
+                                    </div>
+                                    <div class="panel-footer text-right">
+                                        <button id="resetSeach" class="btn btn-default btn-labeled" type="button"><i
+                                                class="fas fa-redo-alt fa-flip-horizontal"></i>&nbsp;Reset</button>
+                                        <button id="seachprefix" type="button" class="btn btn-primary btn-labeled"><i
+                                                class="fas fa-search"></i>&nbsp;Search</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ================================================= -->
+                    <!-- END  Member PREFIX Search -->
+                    <!-- ================================================= -->
+
+
+
+                    <!-- SHOW Prefix TABLE information -->
+                    <!-- ================================================= -->
+                    <div id="page-show">
+                        <div class="row">
+                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="panel-heading">
+
+                                </div>
+                                <div class="panel panel-body text-left">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title text-bold">Member Prefix Results</h3>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <button id="openModalPrefixAdd" class="btn btn-success btn-labeled"><i
+                                                        class="fas fa-plus"></i>&nbsp;Add</button><br><br>
+
+
+                                            </div>
+                                            <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <table class="table table-striped table-bordered datatable"
+                                                    id="tablePrefix" data-width="100%"></table>
+                                                </class>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ================================================= -->
+                    <!--END SHOW Prefix TABLE information -->
+                </div>
+
+                <!-- ================================================= -->
+                <!-- END PAGE CONTENT -->
+
+                <!-- ================================================= -->
+
+
+
+                <!--===================================================-->
+                <!--MODAL ADD Prefix MEMBER-->
+                <!--===================================================-->
+                <div class="modal fade" id="modal-add-Prefix" role="dialog" tabindex="-1"
+                    aria-labelledby="modal-add-Prefix" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!--MODAL HEADER-->
+                            <!--===================================================-->
+                            <div class="modal-header">
+                                <button type="button" id="closemodelAdd" class="close" data-dismiss="modal"><i
+                                        class="pci-cross pci-circle"></i></button>
+                                <h4 class="modal-title">Register Prefix Member</h4>
+                            </div>
+                            <!--===================================================-->
+                            <!--END MODAL HEADER-->
+                            <!--MODAL BODY-->
+                            <!--===================================================-->
+                            <div class="modal-body">
+                                <div class="container-modal-body">
+
+                                    <form class="form-horizontal">
+                                        <!--INPUT Prefix Name -->
+                                        <!--===================================================-->
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Prefix Name<span
+                                                    class="error">*</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="txtprefixname"
+                                                    placeholder="Prefix Name" id="txtprefixname" />
+                                            </div>
+
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--END INPUT Prefix Name -->
+                                        <!--INPUT Prefix Description -->
+                                        <!--===================================================-->
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Prefix Description</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="txtPrefixdes"
+                                                    placeholder="Prefix Description" id="txtPrefixdes" />
+                                            </div>
+
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--END INPUT Prefix Description -->
+                                        <!--SELECT Active-->
+                                        <!--===================================================-->
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="regisactivprefix"  >Active<span class="error">*</span></label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control selectpicker" data-live-search="true"
+                                                    data-width="100%" name="regisactivprefix" id="regisactivprefix">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--END SELECT Active-->
+
+                                        <!--BUTTON REGISTER -->
+                                        <!--===================================================-->
+                                        <div class="input-group mar-btm col-xs-9 button-float-left">
+                                            <button class="btn btn-default" id="cancelRegis" type="button"><i
+                                                    class="fas fa-times"></i>&nbsp;&nbsp;Cancel</button>&nbsp;
+                                            <button id="regisPrefix" class="btn btn-success" type="button"><i
+                                                    class="fas fa-save"></i>&nbsp;&nbsp;Save</button>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!-- END BUTTON REGISTER -->
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                            <!--END MODAL BODY-->
+                        </div>
+                    </div>
+                </div>
+                <!--===================================================-->
+                <!--END MODAL ADD DETAIL MEMBER-->
+
+
+
+                <!--===================================================-->
+                <!--MODAL EDIT DETAIL MEMBER-->
+                <!--===================================================-->
+                <div class="modal fade" id="modal-edit-Prefix" role="dialog" tabindex="-1"
+                    aria-labelledby="modal-edit-Prefix" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!--MODAL HEADER-->
+                            <!--===================================================-->
+                            <div class="modal-header">
+                                <button type="button" id="closemodelEdit"  class="close" data-dismiss="modal"><i
+                                        class="pci-cross pci-circle"></i></button>
+                                <h4 class="modal-title">Update Prefix member</h4>
+                            </div>
+                            <!--===================================================-->
+                            <!--END MODAL HEADER-->
+                            <!--MODAL BODY-->
+                            <!--===================================================-->
+                            <div class="modal-body">
+                                <div class="container-modal-body">
+
+
+                                    <form class="form-horizontal">
+                                        <!--INPUT Prefix Name -->
+                                        <!--===================================================-->
+                                        <div class="form-group">
+                                            <input type="text" class="hidden" name="txtPrefixdes" id="idedPrefix" />
+                                            <input type="text" class="hidden" name="txtPrefixdes"
+                                                id="edvaluePrefixdes" />
+                                            <label class="col-sm-3 control-label">Prefix Name<span
+                                                    class="error">*</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="edtxtprefixname"
+                                                    placeholder="Prefix Name" id="edtxtprefixname" />
+                                            </div>
+
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--END INPUT Prefix Name -->
+                                        <!--INPUT Prefix Description -->
+                                        <!--===================================================-->
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Prefix Description</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" name="edtxtPrefixdes"
+                                                    placeholder="Prefix Description" id="edtxtPrefixdes" />
+                                            </div>
+
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--END INPUT Prefix Description -->
+                                        <!--SELECT Active-->
+                                        <!--===================================================-->
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Active<span
+                                                    class="error">*</span></label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control selectpicker" data-live-search="true"
+                                                    data-width="100%" name="edactivprefix" id="edactivprefix">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--END SELECT Active-->
+
+                                        <!--BUTTON EDIT -->
+                                        <!--===================================================-->
+                                        <div class="input-group mar-btm col-xs-9 button-float-left">
+                                            <button data-dismiss="modal" class="btn btn-default" type="button"
+                                                id="cancelEdit"><i
+                                                    class="fas fa-times"></i>&nbsp;&nbsp;Cancel</button>&nbsp;
+                                            <button id="editPrefix" class="btn btn-primary" type="button"><i
+                                                    class="fas fa-save"></i>&nbsp;&nbsp;Save</button>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!-- END BUTTON EDIT -->
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!--===================================================-->
+                            <!--END MODAL BODY-->
+                        </div>
+                    </div>
+                </div>
+                <!--===================================================-->
+                <!--END MODAL  EDIT PREFIX MEMBER-->
+
+            </div>
+            <!-- ================================================= -->
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- ================================================= -->
+        <!-- END CONTENT CONTAINER -->
+        <!-- MAIN NAVIGATION -->
+        <!-- ================================================= -->
+        <nav id="mainnav-container"></nav>
+        <!-- ================================================= -->
+        <!-- END MAIN NAVIGATION -->
+        <!-- </div> -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+        <footer id="footer"></footer>
+        <!-- ================================================= -->
+        <!-- END FOOTER -->
+    </div>
+    <!-- ================================================= -->
+    <!-- END OF CONTAINER -->
+
+    <!-- JAVASCRIPT -->
+    <!-- ================================================= -->
+    <script src="../source/plugins/jquery/jquery.min.js"></script>
+    <script src="../source/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../source/plugins/pace/pace.min.js"></script>
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <script src="../source/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+    <script src="../source/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script> -->
+    <!-- ================================================= -->
+    <!-- END JAVASCRIPT -->
+    <!-- CUSTOM JAVASCRIPT -->
+    <!-- ================================================= -->
+    <!--DataTables [ OPTIONAL ]-->
+    <script src="../source/plugins/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="../source/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+    <script src="../source/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../source/plugins/momentjs/moment.min.js"></script>
+    <script src="../source/plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../source/js/web-custom.js"></script>
+    <script src="../master-data/js/memberprefixSearch.js"></script>
+    <!-- ================================================= -->
+    <!-- END CUSTOM JAVASCRIPT -->
+</body>
+
+</html>

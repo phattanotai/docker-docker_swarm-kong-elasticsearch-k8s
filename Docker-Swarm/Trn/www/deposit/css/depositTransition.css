@@ -1,0 +1,24 @@
+.image-bill-preview {
+  text-align: center;
+  padding: 10px 5%;
+  min-height: 200px;
+  background-image: url(../../source/img/preview.png);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+#image-bill-show {
+  height: 100%;
+  transition-duration: 1s;
+}
+p {
+  margin: 0px;
+}
+button {
+  margin: 2px 5px;
+}
+.load3 .loader {
+  width: 5em;
+  height: 5em;
+}

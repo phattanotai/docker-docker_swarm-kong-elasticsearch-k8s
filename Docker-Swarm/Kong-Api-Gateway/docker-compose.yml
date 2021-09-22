@@ -103,4 +103,9 @@ volumes:
   kong_data:
     external: true
     name:  kong_api_gateway_data
+    
+networks:
+  default:
+    external:
+      name: swarm_netwoek
   

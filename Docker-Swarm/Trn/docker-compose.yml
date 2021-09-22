@@ -1,0 +1,163 @@
+version: "3.9"
+services:  
+  # Database mongodb
+  trn_mongodb:
+    image : mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: root-db
+    volumes:
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - trn_data:/data/db
+    ports:
+      - 27017:27017
+    restart: always
+    networks: 
+      - default
+
+  # # Migration data
+  # trn_migration:
+  #   build: 
+  #     context: ./api
+  #     dockerfile: Dockerfile.db
+  #   working_dir: /app
+  #   environment:
+  #     NODE_ENV: production
+  #     DB_HOST: trn_mongodb
+  #     DB_PORT: 27017
+  #     DB_USERNAME: admin
+  #     DB_PASSWORD: 1234
+  #     DB_DATABASE: trn
+  #   command: node db/index.js
+  #   networks: 
+  #     - default
+  #   links:
+  #     - trn_mongodb
+  #   depends_on:
+  #     - trn_mongodb
+
+  # Frontend
+  trn_frontend:
+    image: trn_frontend
+    build: 
+      context: ./www
+      dockerfile: ./Dockerfile
+    restart: always
+    ports: 
+      - 8801:80
+    networks: 
+      - default
+    links:
+      - trn_auth
+
+  # API Auth
+  trn_auth:
+    image: trn_auth
+    build: 
+      context: ./api
+      dockerfile: ./Dockerfile.auth
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      DB_HOST: trn_mongodb
+      DB_PORT: 27017
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      DB_DATABASE: trn
+    ports: 
+      - 30000:30000
+    command: node server/server.js
+    networks: 
+      - default
+    links:
+      - trn_mongodb
+    depends_on:
+      - trn_mongodb
+      - trn_migration
+
+  # API staff
+  trn_staff:
+    image: trn_staff
+    build: 
+      context: ./api
+      dockerfile: ./Dockerfile.staff
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      DB_HOST: trn_mongodb
+      DB_PORT: 27017
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      DB_DATABASE: trn
+    ports: 
+      - 31000:31000
+    command: node server/server.js
+    networks: 
+      - default
+    links:
+      - trn_mongodb
+    depends_on:
+      - trn_mongodb
+      - trn_migration
+
+  # API member
+  trn_member:
+    image: trn_member
+    build: 
+      context: ./api
+      dockerfile: ./Dockerfile.member
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      DB_HOST: trn_mongodb
+      DB_PORT: 27017
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      DB_DATABASE: trn
+    ports: 
+      - 32000:32000
+    command: node server/server.js
+    networks: 
+      - default
+    links:
+      - trn_mongodb
+    depends_on:
+      - trn_mongodb
+      - trn_migration
+
+  # API master data
+  trn_master_data:
+    image: trn_master_data
+    build: 
+      context: ./api
+      dockerfile: ./Dockerfile.masterData
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      DB_HOST: trn_mongodb
+      DB_PORT: 27017
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      DB_DATABASE: trn
+    ports: 
+      - 35000:35000
+    command: node server/server.js
+    networks: 
+      - default
+    links:
+      - trn_mongodb
+    depends_on:
+      - trn_mongodb
+      - trn_migration
+
+
+networks:
+  default:
+    external:
+      name: swarm_network
+
+volumes:
+  trn_data:
+    external: true
+    name:  trn_data
