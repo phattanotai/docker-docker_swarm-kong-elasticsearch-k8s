@@ -1,0 +1,51 @@
+docker swarm init
+
+docker node ls
+
+docker swarm join-token manager
+docker swarm join-token worker
+
+
+docker network create -d overlay swarm_network
+
+docker  volume create trn_data
+docker  volume create kong_api_gateway_data
+
+
+docker service create --replicas 1 --name visualize --mount type=bind,src=/var/run/docker.sock,destination=/var/run/docker.sock   --publish  8080:8080 ajsurath/visualizer:1.0
+
+localhost:8080
+
+cd Angular-Nginx-Api
+docker stack deploy --compose-file docker-compose.yml angular_api
+
+localhost:8800
+
+cd Kong-Api-Gateway
+docker stack deploy --compose-file docker-compose.yml kong_api_gateway
+
+localhost:1337
+
+cd Trn
+docker stack deploy --compose-file docker-compose.yml trn
+
+localhost:8801
+
+docker service ls
+docker stack ls
+
+
+docker service update angular-api_user-api --image localhost:5000/user-api
+docker stack deploy --compose-file portainer-agent-stack.yml portainer 
+
+
+
+
+setup kong
+
+   create service trn_master_data  
+        set host = trn_trn_master_data 
+        create route 
+            set path = /api/master-data/
+
+
