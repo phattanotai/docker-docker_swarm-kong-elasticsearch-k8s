@@ -1,7 +1,7 @@
 # ignore config folder www
-/www/config
+# /www/config
 # ignore config folder api
-/api/config
+# /api/config
 /api/auth/node_modules
 /api/member/node_modules
 /api/deposit/node_modules
