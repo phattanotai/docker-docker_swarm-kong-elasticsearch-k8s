@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <!-- STYLESHEET -->
+    <!-- ================================================= -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../source/plugins/bootstrap/bootstrap.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../source/plugins/nifty/nifty.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../source/icons/premium-line-icons.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../source/icons/premium-solid-icons.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../source/plugins/pace/pace.min.css"
+      type="text/css"
+    />
+    <!--DataTables [ OPTIONAL ]-->
+    <link
+      href="../source/plugins/datatables/media/css/dataTables.bootstrap.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../source/plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css"
+      rel="stylesheet"
+    />
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link
+      href="../source/plugins/bootstrap-select/bootstrap-select.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+    <!-- END STYLESHEET -->
+    <!-- ================================================= -->
+    <!-- THEME -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="" type="text/css" />
+    <!-- ================================================= -->
+    <!-- END THEME -->
+    <!-- CUSTOM CSS -->
+    <!-- ================================================= -->
+    <link
+      rel="stylesheet"
+      href="../source/css/web-custom.css"
+      type="text/css"
+    />
+    <!-- ================================================= -->
+    <!-- END CUSTOM CSS -->
+    <!--Bootstrap Datetimepicker [ OPTIONAL ]-->
+    <link
+      href="../source/plugins/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
+      rel="stylesheet"
+    />
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <link
+      href="../source/plugins/bootstrap-validator/bootstrapValidator.min.css"
+      rel="stylesheet"
+    />
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../source/css/demo/nifty-demo-icons.min.css" rel="stylesheet" />
+    <!-- Page Css-->
+    <link href="./css/masterDataDocumentType.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+      <!-- NAVBAR -->
+      <!-- ================================================= -->
+      <header id="navbar"></header>
+      <!-- ================================================= -->
+      <!-- END NAVBAR -->
+      <div class="boxed">
+        <!-- CONTENT CONTAINER -->
+        <!-- ================================================= -->
+        <div id="content-container">
+          <div id="page-head"></div>
+          <!-- PAGE CONTENT -->
+          <!-- ================================================= -->
+          <div id="page-content">
+            <div class="row">
+              <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="panel text-left">
+                  <div class="panel-body" id="mainWithDraw">
+                    <div class="panel-heading">
+                      <h3 class="panel-title text-bold">
+                        Document Type Search
+                      </h3>
+                    </div>
+                    <form class="form-horizontal">
+                      <div class="panel-body">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <div class="form-group">
+                            <label
+                              class="col-sm-3 control-label text-left"
+                              for="docName"
+                              >Document Type Name</label
+                            >
+                            <div class="col-sm-9">
+                              <input
+                                type="text"
+                                placeholder="Document Type Name"
+                                id="docName"
+                                name="docName"
+                                class="form-control"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <div class="form-group">
+                            <label
+                              class="col-sm-3 control-label text-left"
+                              for=""
+                              >Document Type Description</label
+                            >
+                            <div class="col-sm-9">
+                              <input
+                                type="text"
+                                placeholder="Document Type Description"
+                                id="docDesc"
+                                name="docDesc"
+                                class="form-control"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <div class="form-group">
+                            <label
+                              class="col-sm-3 control-label text-left"
+                              for="activeDdl"
+                              >Active
+                            </label>
+                            <div class="col-sm-9">
+                              <select
+                                name="activeDdl"
+                                id="activeDdl"
+                                class="form-control selectpicker"
+                              ></select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="panel-footer text-right">
+                    <button class="btn btn-default" id="resetDoc">
+                      <i class="fas fa-redo-alt fa-flip-horizontal"></i
+                      >&nbsp;Reset
+                    </button>
+                    <button class="btn btn-primary" id="searchDoc">
+                      <i class="fas fa-search"></i>&nbsp;Search
+                    </button>
+                  </div>
+                </div>
+                <div class="panel text-left">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button
+                          class="btn btn-success m-t-5 m-b-15"
+                          type="button"
+                          id="addDoc"
+                        >
+                          <i class="fas fa-plus"></i>&nbsp;Add
+                        </button>
+                        <table
+                          class="table table-striped table-bordered datatable"
+                          id="tableDoc"
+                          width="100%"
+                        >
+                          <thead>
+                            <tr>
+                              <th class="text-center">Document Type Name</th>
+                              <th class="text-center">
+                                Document Type Abbreviation
+                              </th>
+                              <th class="text-center">
+                                Document Type Description
+                              </th>
+                              <th class="text-center">Active</th>
+                              <th class="text-center">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ================================================= -->
+                <!-- END PANEL BODY -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ================================================= -->
+        <!-- END PAGE CONTENT -->
+      </div>
+      <!-- ================================================= -->
+      <!-- END CONTENT CONTAINER -->
+      <!-- MAIN NAVIGATION -->
+      <!-- ================================================= -->
+      <nav id="mainnav-container"></nav>
+      <!-- ================================================= -->
+      <!-- END MAIN NAVIGATION -->
+      <!-- Modal Bank -->
+      <div
+        class="modal fade"
+        id="modalDoc"
+        role="dialog"
+        tabindex="-1"
+        aria-labelledby="modalDoc"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!--Modal header-->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <i class="pci-cross pci-circle"></i>
+              </button>
+              <h4 class="modal-title" id="modalTitle">Document type</h4>
+            </div>
+            <!--Modal body-->
+            <div class="modal-body" id="modal-change">
+              <div class="panel-body">
+                <div class="col-lg-10 col-lg-offset-1">
+                  <div class="form-horizontal">
+                    <div class="row">
+                      <div class="form-group">
+                        <label class="col-sm-6 control-label text-left" for=""
+                          >Document Type Name</label
+                        >
+                        <div class="col-sm-6">
+                          <input
+                            type="text"
+                            id="docNameModal"
+                            name="docNameModal"
+                            placeholder="Document Type Name"
+                            class="form-control"
+                          />
+                          <input
+                            type="hidden"
+                            id="docId"
+                            name="docId"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-6 control-label text-left" for=""
+                          >Document Type Abbreviation</label
+                        >
+                        <div class="col-sm-6">
+                          <input
+                            type="text"
+                            placeholder="Document Type Abbreviation"
+                            id="docAbbModal"
+                            name="docAbbModal"
+                            class="form-control"
+                            onkeyup="this.value = this.value.toUpperCase()"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label
+                          class="col-sm-6 control-label text-left"
+                          for="docDescModal"
+                          >Document Type Description</label
+                        >
+                        <div class="col-sm-6">
+                          <input
+                            type="text"
+                            placeholder="Document Type Description"
+                            id="docDescModal"
+                            name="docDescModal"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group" id="activeDdlModalFrom">
+                        <label
+                          class="col-sm-6 control-label text-left"
+                          for="activeDdlModal"
+                          >Active
+                        </label>
+                        <div class="col-sm-6">
+                          <select
+                            name="activeDdlModal"
+                            id="activeDdlModal"
+                            class="form-control selectpicker"
+                          ></select>
+                        </div>
+                      </div>
+                      <div
+                        class="input-group mar-btm col-xs-12 button-float-right m-t-30"
+                      >
+                        <button
+                          data-dismiss="modal"
+                          class="btn btn-default m-r-10"
+                          id="btnClose"
+                        >
+                          <i class="fas fa-times"></i>&nbsp;Cancel
+                        </button>
+                        <button class="btn btn-success" id="btnAddDocType">
+                          <i class="fas fa-save"></i>&nbsp;Save
+                        </button>
+                        <button
+                          class="d-p-none btn btn-primary"
+                          id="btnEditDocType"
+                        >
+                          <i class="fas fa-save"></i>&nbsp;Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer id="footer"></footer>
+    </div>
+    <!--End Modal Bank  -->
+    <!-- </div> -->
+    <!-- FOOTER -->
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- END FOOTER -->
+    <!-- </div> -->
+    <!-- ================================================= -->
+    <!-- END OF CONTAINER -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================================= -->
+    <script src="../source/plugins/jquery/jquery.min.js"></script>
+    <script src="../source/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../source/plugins/pace/pace.min.js"></script>
+
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <script src="../source/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+    <script src="../source/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script> -->
+    <!-- ================================================= -->
+    <!-- END JAVASCRIPT -->
+    <!-- CUSTOM JAVASCRIPT -->
+    <!-- ================================================= -->
+
+    <!--DataTables [ OPTIONAL ]-->
+    <script src="../source/plugins/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="../source/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+    <script src="../source/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../source/plugins/momentjs/moment.min.js"></script>
+    <script src="../source/plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../source/js/web-custom.js"></script>
+    <script src="../master-data/js/masterDataDocumentType.js"></script>
+    <!-- ================================================= -->
+    <!-- END CUSTOM JAVASCRIPT -->
+  </body>
+</html>

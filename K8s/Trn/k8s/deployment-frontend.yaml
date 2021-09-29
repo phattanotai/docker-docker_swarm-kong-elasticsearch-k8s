@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trn-frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: trn-frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: trn-frontend
+        env: development
+    spec:
+      containers:
+      - name: trn-frontend
+        image: asia.gcr.io/platinum-honor-326814/trn-frontend:v1
+        ports:
+        - containerPort: 30000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trn-frontend-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 30000
+    targetPort: 30000
+    protocol: TCP
+  selector:
+    app: trn-frontend

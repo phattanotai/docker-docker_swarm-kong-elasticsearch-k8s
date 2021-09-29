@@ -1,0 +1,15 @@
+# db
+FROM node
+ENV NODE_ENV=production
+ARG SERVICE=db
+WORKDIR /root
+COPY ../api/${SERVICE} /root/app
+COPY ../api/config /root/config
+COPY ../api/constants /root/constants
+RUN cd app && npm install --production
+CMD [ "node", "app/index.js" ]
+
+
+
+
+

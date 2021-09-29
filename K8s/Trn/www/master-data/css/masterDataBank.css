@@ -1,0 +1,27 @@
+table td {
+    max-width: 120px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow: hidden;
+}
+.required{
+    color: red;
+}
+
+.CellComment{
+    display:none;
+    position:absolute; 
+    z-index:100;
+    border:1px;
+    background-color:black;
+    border-width:1px;
+    border-color:white;
+    color: white;
+    padding:3px;
+    border-radius: 5px;
+  }
+
+  .text-center:hover span.CellComment{
+    display:block;
+  }
