@@ -35,7 +35,7 @@ docker service ls
 docker stack ls
 
 
-docker service update angular-api_user-api --image localhost:5000/user-api
+docker service update trn_trn_frontend --image trn_frontend --force
 docker stack deploy --compose-file portainer-agent-stack.yml portainer 
 
 

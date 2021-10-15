@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: trn-frontend
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,9 +15,17 @@ spec:
     spec:
       containers:
       - name: trn-frontend
-        image: asia.gcr.io/platinum-honor-326814/trn-frontend:v1
+        image: asia.gcr.io/platinum-honor-326814/trn_frontend:v1
+        imagePullPolicy: Always
         ports:
-        - containerPort: 30000
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "10Mi"
+            cpu: "10m"
+          limits:
+            memory: "10Mi"
+            cpu: "10m"
 ---
 apiVersion: v1
 kind: Service
@@ -26,8 +34,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 30000
-    targetPort: 30000
+  - port: 8801
+    targetPort: 80
     protocol: TCP
   selector:
     app: trn-frontend

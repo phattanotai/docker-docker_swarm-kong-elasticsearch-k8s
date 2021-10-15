@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+        env: development
+    spec:
+      containers:
+      - name: nodejs-app
+        image: asia.gcr.io/platinum-honor-326814/node-app:v1
+        ports:
+        - containerPort: 4000
+        resources:
+          requests:
+            memory: "10Mi"
+            cpu: "5m"
+          limits:
+            memory: "10Mi"
+            cpu: "5m"
+        env:
+        - name: PORT
+          valueFrom:
+            secretKeyRef:
+              name: nodejs-app-secret
+              key: PORT
+        - name: LOG_LEVEL
+          valueFrom:
+            secretKeyRef:
+              name: nodejs-app-secret
+              key: LOG_LEVEL
+        - name: NODE_ENV
+          valueFrom:
+            secretKeyRef:
+              name: nodejs-app-secret
+              key: NODE_ENV
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 4000
+    targetPort: 4000
+    protocol: TCP
+  selector:
+    app: nodejs-app

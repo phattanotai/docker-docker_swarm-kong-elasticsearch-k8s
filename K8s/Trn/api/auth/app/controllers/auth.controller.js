@@ -105,6 +105,7 @@ module.exports.unlock = async (request, response) => {
         }
     }
 }
+
 // CONTROLLER CHECK STAFF LOGIN  1/9/2020
 module.exports.checkLogin = async (request, response) => {
     try {
@@ -122,6 +123,25 @@ module.exports.checkLogin = async (request, response) => {
                 message: 'Username locked'
             });
         }
+    } catch (error) {
+        debug('auth.controller -> checkLogin -> '+ error);
+        response.send({ 
+            statusCode: statusCode.ClientErrors.unauthorized.codeText, 
+            statusText: statusCode.ClientErrors.unauthorized.description, 
+            message: error ? error.toString(): ''
+        });
+    }
+}
+
+// CONTROLLER CHECK STAFF LOGIN  1/9/2020
+module.exports.hello = async (request, response) => {
+    try {
+            response.send({ 
+                statusCode: statusCode.Success.ok.codeText, 
+                statusText: statusCode.Success.ok.description, 
+                message: 'hello world'
+            });
+        
     } catch (error) {
         debug('auth.controller -> checkLogin -> '+ error);
         response.send({ 

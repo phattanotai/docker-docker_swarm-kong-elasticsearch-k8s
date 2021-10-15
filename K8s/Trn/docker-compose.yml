@@ -1,15 +1,25 @@
 version: "3.9"
 services:  
-  # Database mongodb
+  # # Database mongodb
+  # trn_mongodb:
+  #   image : mongo:latest
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: password
+  #     MONGO_INITDB_DATABASE: root-db
+  #   volumes:
+  #     - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  #     - trn_data:/data/db
+  #   ports:
+  #     - 27017:27017
+  #   restart: always
+  #   networks: 
+  #     - default
+
   trn_mongodb:
-    image : mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: root-db
-    volumes:
-      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-      - trn_data:/data/db
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.mongo
     ports:
       - 27017:27017
     restart: always
@@ -19,7 +29,7 @@ services:
   # Frontend
   frontend:
     build: 
-      context: ./dockerfile
+      context: ./
       dockerfile: Dockerfile.frontend
     restart: always
     ports: 
@@ -52,77 +62,74 @@ services:
     depends_on:
       - trn_mongodb
 
-  # # API staff
-  # trn_staff:
-  #   build: 
-  #     context: ./api
-  #     dockerfile: Dockerfile.staff
-  #   working_dir: /app
-  #   environment:
-  #     NODE_ENV: production
-  #     DB_HOST: trn_mongodb
-  #     DB_PORT: 27017
-  #     DB_USERNAME: admin
-  #     DB_PASSWORD: 1234
-  #     DB_DATABASE: trn
-  #   ports: 
-  #     - 31000:31000
-  #   command: node server/server.js
-  #   networks: 
-  #     - default
-  #   links:
-  #     - trn_mongodb
-  #   depends_on:
-  #     - trn_mongodb
-  #     - trn_migration
+  # API staff
+  trn_staff:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.staff
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      DB_HOST: trn_mongodb
+      DB_PORT: 27017
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      DB_DATABASE: trn
+    ports: 
+      - 31000:31000
+    command: node server/server.js
+    networks: 
+      - default
+    links:
+      - trn_mongodb
+    depends_on:
+      - trn_mongodb
 
-  # # API member
-  # trn_member:
-  #   build: 
-  #     context: ./api
-  #     dockerfile: Dockerfile.member
-  #   working_dir: /app
-  #   environment:
-  #     NODE_ENV: production
-  #     DB_HOST: trn_mongodb
-  #     DB_PORT: 27017
-  #     DB_USERNAME: admin
-  #     DB_PASSWORD: 1234
-  #     DB_DATABASE: trn
-  #   ports: 
-  #     - 32000:32000
-  #   command: node server/server.js
-  #   networks: 
-  #     - default
-  #   links:
-  #     - trn_mongodb
-  #   depends_on:
-  #     - trn_mongodb
-  #     - trn_migration
+  # API member
+  trn_member:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.member
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      DB_HOST: trn_mongodb
+      DB_PORT: 27017
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      DB_DATABASE: trn
+    ports: 
+      - 32000:32000
+    command: node server/server.js
+    networks: 
+      - default
+    links:
+      - trn_mongodb
+    depends_on:
+      - trn_mongodb
 
-  # # API master data
-  # trn_master_data:
-  #   build: 
-  #     context: ./api
-  #     dockerfile: Dockerfile.masterData
-  #   working_dir: /app
-  #   environment:
-  #     NODE_ENV: production
-  #     DB_HOST: trn_mongodb
-  #     DB_PORT: 27017
-  #     DB_USERNAME: admin
-  #     DB_PASSWORD: 1234
-  #     DB_DATABASE: trn
-  #   ports: 
-  #     - 35000:35000
-  #   command: node server/server.js
-  #   networks: 
-  #     - default
-  #   links:
-  #     - trn_mongodb
-  #   depends_on:
-  #     - trn_mongodb
-  #     - trn_migration
+  # API master data
+  trn_master_data:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.masterData
+    working_dir: /app
+    environment:
+      NODE_ENV: production
+      DB_HOST: trn_mongodb
+      DB_PORT: 27017
+      DB_USERNAME: admin
+      DB_PASSWORD: 1234
+      DB_DATABASE: trn
+    ports: 
+      - 35000:35000
+    command: node server/server.js
+    networks: 
+      - default
+    links:
+      - trn_mongodb
+    depends_on:
+      - trn_mongodb
 
 networks:
   default:

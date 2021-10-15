@@ -1,6 +1,6 @@
 const API = {
-   auth: `http://localhost:8000/api/auth`,
-   staff: `http://localhost:8000/api/staff`,
-   member: `http://localhost:8000/api/member`,
-   masterData: `http://localhost:8000/api/master-data`
+   auth: `https://trn-service.gracia.tech/api/auth`,
+   staff: `https://trn-service.gracia.tech/api/staff`,
+   member: `https://trn-service.gracia.tech/api/member`,
+   masterData: `https://trn-service.gracia.tech/api/master-data`
 };

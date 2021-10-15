@@ -1,0 +1,26 @@
+version: '3.4'
+services:
+  nginx:
+    container_name: nginx-ssl
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      network: host
+      args:
+        - CERTBOT_EMAIL=hello@yourcompany.com 
+        - DOMAIN_LIST=gracia.tech,api.gracia.tech,www.gracia.tech 
+    restart: always
+    volumes:
+      - ./nginx/config/conf.d:/etc/nginx/conf.d
+      - letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+
+volumes:
+  letsencrypt:
+  
+networks: 
+  default:
+    external:
+      name: docker_network

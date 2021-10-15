@@ -1,4 +1,16 @@
 asia.gcr.io/platinum-honor-326814/node-app:v1
 
+
 docker build -t asia.gcr.io/platinum-honor-326814/node-app:v1 .
+docker push asia.gcr.io/platinum-honor-326814/node-app:v1
+
+
+
+docker tag [IMAGE] gcr.io/[PROJECT-ID]/[IMAGE]
+For example
+docker tag trn_trn_auth asia.gcr.io/platinum-honor-326814/node-app:v1
+
+
+
+
 docker push asia.gcr.io/platinum-honor-326814/node-app:v1

@@ -3,9 +3,9 @@ FROM node
 ENV NODE_ENV=production
 ARG SERVICE=member
 WORKDIR /app
-COPY ../api/${SERVICE} /app/server
-COPY ../api/config /app/config
-COPY ../api/constants /app/constants
+COPY ./api/${SERVICE} /app/server
+COPY ./api/config /app/config
+COPY ./api/constants /app/constants
 RUN cd server && npm install --production
 
 EXPOSE 32000

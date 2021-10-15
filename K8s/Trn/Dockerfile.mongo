@@ -1,0 +1,22 @@
+# mongodb
+FROM mongo:latest
+
+ARG MONGO_USER=root
+ARG MONGO_PASSWORD=password
+ARG MONGO_DB=root-db
+
+ENV MONGO_INITDB_ROOT_USERNAME=$MONGO_USER
+ENV MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+ENV MONGO_INITDB_DATABASE=$MONGO_DB
+
+COPY ./docker-entrypoint-initdb.d/mongo-init.js /docker-entrypoint-initdb.d/mongo-init.js
+
+VOLUME  trn_data:/data/db
+
+EXPOSE 27017
+
+
+
+
+
+

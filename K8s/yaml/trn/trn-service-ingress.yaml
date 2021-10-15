@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: trn-service-ingress
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+    # kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: "k8s-trn.gracia.tech"
+    http:
+      paths:
+      - path: /api/auth(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: trn-auth-service
+            port:
+              number: 30000
+  - host: "k8s-trn.gracia.tech"
+    http:
+      paths:
+      - path: /api/staff(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: trn-staff-service
+            port:
+              number: 31000
+  - host: "k8s-trn.gracia.tech"
+    http:
+      paths:
+      - path: /api/member(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: trn-member-service
+            port:
+              number: 32000
+  - host: "k8s-trn.gracia.tech"
+    http:
+      paths:
+      - path: /api/master-data(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: trn-master-data-service
+            port:
+              number: 35000
