@@ -1,31 +1,38 @@
-version: '3.9'
-services: 
+version: "3.9"
+services:
   elasticsearch:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-    environment: 
+    environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
-    ports: 
+    ports:
       - 9200:9200
-    networks: 
+    networks:
       - default
-    volumes: 
+    volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
+    deploy:
+      mode: replicated
+      replicas: 1
 
   kibana:
     container_name: kibana
     image: docker.elastic.co/kibana/kibana:7.14.0
-    ports: 
-     - 5601:5601
-    networks: 
+    ports:
+      - 5601:5601
+    networks:
       - default
+    deploy:
+      mode: replicated
+      replicas: 1
 
-volumes: 
+volumes:
   elasticsearch_data:
+    external: true
+    name: elastic_search_data
 
 networks:
   default:
     external:
       name: swarm_network
-    

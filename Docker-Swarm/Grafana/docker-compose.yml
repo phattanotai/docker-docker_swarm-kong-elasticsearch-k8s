@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+    external_links:
+      - prometheus
+    environment:
+      GF_INSTALL_PLUGINS: grafana-clock-panel, grafana-simple-json-datasource
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: swarm_network

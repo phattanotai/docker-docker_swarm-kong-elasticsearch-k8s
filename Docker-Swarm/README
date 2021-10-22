@@ -10,7 +10,7 @@ docker network create -d overlay swarm_network
 
 docker  volume create trn_data
 docker  volume create kong_api_gateway_data
-
+docker volume create  elastic_search_data
 
 docker service create --replicas 1 --name visualize --mount type=bind,src=/var/run/docker.sock,destination=/var/run/docker.sock   --publish  8080:8080 ajsurath/visualizer:1.0
 
@@ -31,14 +31,31 @@ docker stack deploy --compose-file docker-compose.yml trn
 
 localhost:8801
 
+
+
+
+cd Elastic-Search
+docker stack deploy --compose-file docker-compose.yml elastic_search
+
+docker stack deploy --compose-file portainer-agent-stack.yml portainer 
+
+cd Nginx
+docker stack deploy --compose-file docker-compose.yml nginx-proxy
+
+
+
+cd Grafana
+docker stack deploy --compose-file docker-compose.yml grafana
+
+cd Prometheus
+docker stack deploy --compose-file docker-compose.yml prometheus
+
+
 docker service ls
 docker stack ls
 
 
-docker service update trn_trn_frontend --image trn_frontend --force
-docker stack deploy --compose-file portainer-agent-stack.yml portainer 
-
-
+docker service update nginx-proxy_nginx-proxy --image nginx-proxy --force
 
 
 setup kong
